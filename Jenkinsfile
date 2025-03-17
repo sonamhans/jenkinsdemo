@@ -131,6 +131,7 @@ pipeline {
                     dir(GITHUB_PROJECT) {
                         sh 'git add .'
                         sh 'git commit -m "Add Trivy scan report"'
+                        sh 'ssh -T git@github.com'
                         sh 'git push'
                     }
                 }
