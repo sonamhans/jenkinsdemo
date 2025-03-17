@@ -129,11 +129,15 @@ pipeline {
 
                     // Change to the repository directory
                     dir(GITHUB_PROJECT) {
-                        sh 'git add .'
-                        sh 'git commit -m "Add Trivy scan report"'
-                        sh 'git remote set-url origin git@github.com:sonamhans/jenkinsdemo.git'
-                        sh 'ssh -T git@github.com '
-                        sh 'git push'
+
+                        withCredentials([usernamePassword(credentialsId: 'git_id', usernameVariable: 'GITHUB_USER', passwordVariable: 'GITHUB_TOKEN')]) {
+//                             sh "git config --global user.email 'your_email@example.com'"
+//                             sh "git config --global user.name 'Your Name'"
+                            sh "git remote set-url origin https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPO}.git"
+                            sh "git add ."
+                            sh "git commit -m 'Add Trivy scan report'"
+                            sh "git push"
+                        }
                     }
                 }
             }
