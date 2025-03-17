@@ -10,6 +10,4 @@ example generated CSV -> trivy_report_2025-03-16_21-32-42.csv
 
 # System setup
 Following installation needed on environment - 
-Jenkins 
-Docker
-Git 
+Jenkins, Docker, Git 
