@@ -129,9 +129,9 @@ pipeline {
 
                     // Change to the repository directory
                     dir(GITHUB_PROJECT) {
-                        sh "git add ."
-                        sh "git commit -m "Add Trivy scan report""
-                        sh "git push"
+                        sh 'git add .'
+                        sh 'git commit -m "Add Trivy scan report"'
+                        sh 'git push'
                     }
                 }
             }
